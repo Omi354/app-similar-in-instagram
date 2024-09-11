@@ -11,6 +11,13 @@ module AppSimilarInInstagram
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    config.generators.after_generate do |files|
+      parsable_files = files.filter { |file| File.exist?(file) && file.end_with?('.rb') }
+      unless parsable_files.empty?
+        system("bundle exec rubocop -A --fail-level=E #{parsable_files.shelljoin}", exception: true)
+      end
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
