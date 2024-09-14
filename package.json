@@ -1,11 +1,22 @@
 {
   "name": "app_similar_in_instagram",
   "private": true,
+  "engines": {
+    "node": "14.16"
+  },
+  "devDependencies": {
+    "webpack": "4.x.x",
+    "webpack-cli": "3.x.x",
+    "webpack-dev-middleware": "3.x.x",
+    "webpack-dev-server": "3.x.x"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "axios": "^1.7.7",
+    "jquery": "^3.7.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0"

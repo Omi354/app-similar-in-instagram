@@ -9,11 +9,12 @@ require("@rails/activestorage").start()
 require("channels")
 
 import $ from 'jquery'
+import axios from 'axios'
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   // モーダルが表示されないように最初に非表示に設定
   $('#modal-overlay').hide();
-  
+
   // 画像クリックでモーダル表示
   $('#avatar-image').on('click', function() {
     $('#modal-overlay').show(); // モーダルを表示
