@@ -1,1 +1,14 @@
 %p= @user.username
+.img-wrapper
+  - if @profile.avatar.attached?
+    = image_tag @profile.avatar, id: 'avatar-image'
+  - else
+    = image_tag 'default_avatar.png', id: 'avatar-image'
+
+#modal-overlay
+  #modal-content
+    %p アバターをアップロード
+    = form_with model: @profile, url: profile_path, local: true, html: { multipart: true }, method: :put do |f|
+      = f.file_field :avatar, id: 'avatar-input'
+      = f.submit 'Upload Avatar'
+    %button#close-modal 閉じる

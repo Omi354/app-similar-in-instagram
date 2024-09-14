@@ -16,7 +16,13 @@
 
 @import 'variables';
 @import 'form';
+@import 'profile';
 
 body {
   font-family: $font-family;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
 }
