@@ -11,27 +11,45 @@ require("channels")
 import $ from 'jquery'
 import axios from 'axios'
 
-$(document).on('turbolinks:load', function() {
+const initializeModal = () => {
   // モーダルが表示されないように最初に非表示に設定
-  $('#modal-overlay').hide();
+  $('#modal-overlay').hide()
 
   // 画像クリックでモーダル表示
-  $('#avatar-image').on('click', function() {
-    $('#modal-overlay').show(); // モーダルを表示
-  });
+  $('.imgWrapper_avatar').on('click', () => {
+    $('#modal-overlay').show() // モーダルを表示
+  })
 
   // モーダルの閉じるボタンでモーダルを非表示にする
-  $('#close-modal').on('click', function() {
-    $('#modal-overlay').hide(); // モーダルを閉じる
-  });
+  $('#close-modal').on('click', () => {
+    $('#modal-overlay').hide() // モーダルを閉じる
+  })
 
   // 背景をクリックしてもモーダルを閉じる
-  $('#modal-overlay').on('click', function(e) {
-    if (e.target === this) { // モーダルの外側をクリックした場合のみ閉じる
-      $(this).hide();
+  $('#modal-overlay').on('click', (e) => {
+    if (e.target === e.currentTarget) { // モーダルの外側をクリックした場合のみ閉じる
+      $(e.currentTarget).hide();
     }
-  });
-});
+  })
+}
+
+const showAvatar = () => {
+  axios.get('/profile/edit')
+  .then(response =>{
+    const avatarStatus = response.data.hasAvatar
+
+    if (avatarStatus === true) {
+      $('#avatar-image').removeClass('hidden')
+    } else {
+      $('#default-avatar').removeClass('hidden')
+    }
+  })
+}
+
+$(document).on('turbolinks:load', () => {
+  initializeModal()
+  showAvatar()
+})
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

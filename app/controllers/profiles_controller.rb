@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = current_user.prepare_profile
-    binding.pry
     @profile.assign_attributes(profile_params)
     if @profile.save
       redirect_to profile_path, notice: 'プロフィール更新成功！'
@@ -17,6 +16,12 @@ class ProfilesController < ApplicationController
       flash.now[:error] = '更新に失敗しました'
       render :edit
     end
+  end
+
+  def edit
+    profile = current_user.profile
+    avatar_status = profile&.avatar&.attached? || false
+    render json: { hasAvatar: avatar_status }
   end
 
   private

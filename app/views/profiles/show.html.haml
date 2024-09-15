@@ -1,9 +1,8 @@
 %p= @user.username
-.img-wrapper
+.imgWrapper
   - if @profile.avatar.attached?
-    = image_tag @profile.avatar, id: 'avatar-image'
-  - else
-    = image_tag 'default_avatar.png', id: 'avatar-image'
+    = image_tag @profile.avatar, class: 'imgWrapper_avatar hidden', id: 'avatar-image'
+  = image_tag 'default_avatar.png', class: 'imgWrapper_avatar hidden' , id:'default-avatar'
 
 #modal-overlay
   #modal-content
