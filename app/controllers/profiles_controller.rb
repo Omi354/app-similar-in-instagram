@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
     avatar_status = profile&.avatar&.attached? || false
     render json: {
       hasAvatar: avatar_status,
-      avatarUrl: url_for(profile.avatar)
+      avatarUrl: url_for(profile&.avatar)
     }
   end
 

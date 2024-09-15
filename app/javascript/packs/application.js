@@ -45,9 +45,9 @@ const showAvatar = () => {
   .then(response => {
     const avatarStatus = response.data.hasAvatar
     const avatarUrl = response.data.avatarUrl
-
     if (avatarStatus === true && avatarUrl) {
       $('#avatar-image').attr('src', avatarUrl).removeClass('hidden')
+      $('#default-avatar').addClass('hidden')
     } else {
       $('#default-avatar').removeClass('hidden')
     }
