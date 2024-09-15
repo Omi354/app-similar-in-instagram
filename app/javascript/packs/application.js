@@ -10,6 +10,9 @@ require("channels")
 
 import $ from 'jquery'
 import axios from 'axios'
+import { csrfToken } from 'rails-ujs'
+
+axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 const initializeModal = () => {
   // モーダルが表示されないように最初に非表示に設定
@@ -33,23 +36,65 @@ const initializeModal = () => {
   })
 }
 
+const closeModal = () => {
+  $('#modal-overlay').hide()
+}
+
 const showAvatar = () => {
   axios.get('/profile/edit')
-  .then(response =>{
+  .then(response => {
     const avatarStatus = response.data.hasAvatar
+    const avatarUrl = response.data.avatarUrl
 
-    if (avatarStatus === true) {
-      $('#avatar-image').removeClass('hidden')
+    if (avatarStatus === true && avatarUrl) {
+      $('#avatar-image').attr('src', avatarUrl).removeClass('hidden')
     } else {
       $('#default-avatar').removeClass('hidden')
     }
   })
 }
 
+const uploadAvatar = () => {
+  // inputタグからファイルを取得
+  const fileInput = $('#avatar-input')[0]
+
+  // ファイルが選択されていない場合にアラートを表示
+  if(!fileInput.files.length) {
+    alert('No file selected!')
+    return
+  }
+
+  const formData = new FormData()
+  formData.append('profile[avatar]', fileInput.files[0])
+
+  axios.put('/profile', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+  .then(response => {
+    console.log('File uploaded successfully:', response.data)
+    showAvatar()
+    closeModal()
+
+  })
+  .catch(error => {
+    console.error('Error uploading file:', error);
+  })
+}
+
+
 $(document).on('turbolinks:load', () => {
   initializeModal()
   showAvatar()
+
+  $('#uploadAvatarBtn').on('click', (event) => {
+    event.preventDefault()
+    uploadAvatar()
+  })
 })
+
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

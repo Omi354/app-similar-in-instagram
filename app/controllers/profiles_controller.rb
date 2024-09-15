@@ -11,17 +11,19 @@ class ProfilesController < ApplicationController
     @profile = current_user.prepare_profile
     @profile.assign_attributes(profile_params)
     if @profile.save
-      redirect_to profile_path, notice: 'プロフィール更新成功！'
+      render json: { message: 'Profile updated successfully' }
     else
-      flash.now[:error] = '更新に失敗しました'
-      render :edit
+      render json: { error: 'Failed to update profile' }, status: :unprocessable_entity
     end
   end
 
   def edit
     profile = current_user.profile
     avatar_status = profile&.avatar&.attached? || false
-    render json: { hasAvatar: avatar_status }
+    render json: {
+      hasAvatar: avatar_status,
+      avatarUrl: url_for(profile.avatar)
+    }
   end
 
   private
