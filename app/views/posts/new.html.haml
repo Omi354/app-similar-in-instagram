@@ -1,1 +1,15 @@
-%p 投稿画面
+= link_to 'Cance', request.referer || root_path
+%h1 Status
+%input{ type: 'submit', form: 'postForm', value: 'POST' }
+
+- if @post.errors.any?
+  - @post.errors.full_messages.each do |message|
+    = message
+
+= image_tag current_user.profile.avatar
+= current_user.username
+
+= form_with model: @post, id: 'postForm', local:true do |f|
+  = f.text_field :caption, placeholder: "What's on your mind ?"
+  = f.file_field :images, multiple: true
+
