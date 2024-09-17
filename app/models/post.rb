@@ -18,8 +18,11 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
-  has_many_attached :images
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_user, through: :liles, source: :user
+
+  has_many_attached :images
   validates :images, presence: true
 
 end
