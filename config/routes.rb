@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
 
   resources :posts, only: [:new, :create, :index] do
-    resources :likes, only: [:create, :destroy]
+    resource :like, only: [:create, :destroy, :show]
   end
 end

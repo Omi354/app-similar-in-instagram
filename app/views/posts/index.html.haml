@@ -2,7 +2,7 @@
   = image_tag 'photoCamera'
 
 - @posts.each do |post|
-  .card
+  .card.post-index{data: {post_id: post.id}}
     = image_tag post.user.profile.avatar
     = show_posttime(post)
     = post.user.username
@@ -11,11 +11,9 @@
       = image_tag image
 
     = post.caption
-    = link_to post_likes_path(post_id: post.id), method: :post do
-      = image_tag 'likeBtn'
-    - if post.likes.find_by(user_id: current_user.id)
-      = link_to post_like_path(id: post.likes.find_by(user_id: current_user.id).id, post_id: post.id), method: :delete do
-        = image_tag 'unlikeBtn'
+    = link_to post_like_path(post_id: post.id), method: :post do
+      = image_tag 'likeBtn', class: 'hidden', id: "likeBtn_#{post.id}"
+    = image_tag 'unlikeBtn', class: 'hidden', id: "unlikeBtn_#{post.id}"
 
     = image_tag 'commentBtn'
 
