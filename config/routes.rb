@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
   resource :profile, only: [:show, :edit, :update]
-  resources :posts, only: [:new, :create, :index]
+
+  resources :posts, only: [:new, :create, :index] do
+    resources :likes, only: [:create, :destroy]
+  end
 end

@@ -11,8 +11,12 @@
       = image_tag image
 
     = post.caption
+    = link_to post_likes_path(post_id: post.id), method: :post do
+      = image_tag 'likeBtn'
+    - if post.likes.find_by(user_id: current_user.id)
+      = link_to post_like_path(id: post.likes.find_by(user_id: current_user.id).id, post_id: post.id), method: :delete do
+        = image_tag 'unlikeBtn'
 
-    = image_tag 'likeBtn'
     = image_tag 'commentBtn'
 
     = link_to "https://twitter.com/intent/tweet?url=#{URI.encode_www_form_component(request.original_url)}&text=#{URI.encode_www_form_component(post.caption)}", rel: 'nofollow', target: '_blank' do
