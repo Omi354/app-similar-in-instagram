@@ -3,16 +3,14 @@ class CommentsController < ApplicationController
 
   def index
     post = Post.find(params[:post_id])
-    binding.pry
-
+    comments = post.comments
+    render json: comments, include: ['user.profile']
   end
 
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.save!
-    render json: {
-      msg: 'ok'
-    }
+    render json: @comment, include: ['user.profile']
 
   end
 

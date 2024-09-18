@@ -5,12 +5,32 @@ import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 $(document).on('turbolinks:load', () => {
+  const postId = $('#commentTitle').data('post-id')
+
+  axios.get(`/posts/${postId}/comments`)
+  .then(response => {
+    const comments = response.data
+    comments.forEach(comment => {
+      const commentHtml = `
+        <div class="comment">
+          <img src="${comment.user.profile.avatar_url}" alt="User Avatar">
+          <div class="commentContent">${comment.content}</div>
+        </div>
+      `
+      $('.comments-container').append(commentHtml)
+    })
+  })
+
+  .catch(error => {
+    console.error('Error fetching comments:', error)
+  })
+
   $('.commentBtn').on('click', () => {
     $('.commentArea').toggleClass('hidden')
   })
 
+
   $('#submitComment').on('click', () => {
-    const postId = $('#commentTitle').data('post-id')
     const comment = $('#commentArea').val()
     if (comment === '') {
       alert('comment cannot be blank')
@@ -26,9 +46,16 @@ $(document).on('turbolinks:load', () => {
       }
     })
     .then(response => {
-      if(response.data['msg'] === 'ok') {
-        console.log('Done!')
-      }
+      const comment = response.data
+      const commentHtml = `
+        <div class="comment">
+          <img src="${comment.user.profile.avatar_url}" alt="User Avatar">
+          <div class="commentContent">${comment.content}</div>
+        </div>
+      `
+      $('.comments-container').append(commentHtml)
+      $('.commentArea').toggleClass('hidden')
+      $('.commentArea').val('')
     })
   })
 
