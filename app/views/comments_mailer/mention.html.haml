@@ -1,0 +1,4 @@
+%p #{@mentioning_user.username}さんがあなたをメンションしました
+= @comment.content
+
+= link_to 'ポストを確認する', account_url(@mentioning_user)

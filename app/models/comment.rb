@@ -22,6 +22,20 @@
 class Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
+  after_create :check_for_mentions
 
   validates :content, presence: true
+
+  private
+  def check_for_mentions
+    mentioned_usernames = content.scan(/@([^\s@]+)/).flatten
+    mentioned_users = User.where(username: mentioned_usernames)
+    mentioned_users.each do |mentioned_user|
+      send_mention_notification(mentioned_user)
+    end
+  end
+
+  def send_mention_notification(mentioned_user)
+    CommentsMailer.mention_notification(mentioned_user, self).deliver_later
+  end
 end
