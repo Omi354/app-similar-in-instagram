@@ -3,6 +3,7 @@ class CommentsMailer < ApplicationMailer
     @comment = comment
     @mentioned_user = mentioned_user
     @mentioning_user = @comment.user
+    @post_url = post_url(@comment.post)
     mail to: @mentioned_user.email, subject: '【お知らせ】メンションされました'
   end
 end

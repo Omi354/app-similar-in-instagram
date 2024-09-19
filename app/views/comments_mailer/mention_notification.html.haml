@@ -1,2 +1,4 @@
 %p #{@mentioning_user.username}さんがあなたをメンションしました
 = @comment.content
+
+= link_to '該当のポストはこちらから確認できます', @post_url,  target: '_blank'
