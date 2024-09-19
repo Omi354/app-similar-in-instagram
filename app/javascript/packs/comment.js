@@ -4,9 +4,9 @@ import { csrfToken } from 'rails-ujs'
 
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
-$(document).on('turbolinks:load', () => {
-  const postId = $('#commentTitle').data('post-id')
 
+$(document).ready(() => {
+  const postId = $('#commentTitle').data('post-id')
   axios.get(`/posts/${postId}/comments`)
   .then(response => {
     const comments = response.data
@@ -20,7 +20,6 @@ $(document).on('turbolinks:load', () => {
       $('.comments-container').append(commentHtml)
     })
   })
-
   .catch(error => {
     console.error('Error fetching comments:', error)
   })
@@ -58,5 +57,4 @@ $(document).on('turbolinks:load', () => {
       $('.commentArea').val('')
     })
   })
-
 })

@@ -1,3 +1,4 @@
+
 = link_to request.referer || root_path do
   = image_tag 'arror.png'
 
@@ -10,5 +11,6 @@
 .commentArea.hidden
   = text_field_tag 'commentArea'
   %button#submitComment{ type: 'button' } comment
+
 
 = javascript_pack_tag 'comment'
