@@ -35,6 +35,9 @@ gem 'devise'
 gem 'faker'
 gem 'ffi', '~> 1.15.0'
 gem 'hamlit'
+gem 'letter_opener'
+gem 'letter_opener_web', '~> 1.0'
+gem 'sidekiq', '~> 6.4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
