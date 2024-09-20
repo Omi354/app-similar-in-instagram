@@ -12,8 +12,10 @@
 
 = @user.posts.length
 
-%span#followersCount= @user.followers.length
+= link_to account_follower_path(account_id: @user.id) do
+  %span#followersCount= @user.followers.length
 
-= @user.followings.length
+= link_to account_following_path(account_id: @user.id) do
+  = @user.followings.length
 
 = javascript_pack_tag 'account'

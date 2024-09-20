@@ -8,12 +8,12 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
   resource :profile, only: [:show, :edit, :update]
-  resource :following, only: [:index]
-  resource :follower, only: [:index]
-
+  
   resources :accounts, only: [:show] do
     resource :follow, only: [:create, :show]
     resource :unfollow, only: [:create]
+    resource :following, only: [:show]
+    resource :follower, only: [:show]
   end
 
   resources :posts, only: [:new, :create, :index, :show] do
