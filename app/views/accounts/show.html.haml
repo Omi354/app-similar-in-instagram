@@ -1,3 +1,8 @@
 %p= @user.username
+
+= link_to 'Follow', account_follow_path(account_id: @user.id), method: :post
+= link_to 'Unfollow', account_unfollow_path(account_id: @user.id), method: :psot
+
+
 .imgWrapper
   = image_tag @user.profile.avatar, class: 'imgWrapper_avatar', id: 'avatar-image'

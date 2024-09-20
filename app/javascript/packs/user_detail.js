@@ -75,7 +75,7 @@ const uploadAvatar = () => {
 }
 
 
-$(document).on('turbolinks:load', () => {
+$(document).ready(() => {
   initializeModal()
   showAvatar()
 

@@ -3,7 +3,8 @@
 
 - @posts.each do |post|
   .card.post-index{data: {post_id: post.id}}
-    = image_tag post.user.profile.avatar
+    = link_to account_path(post.user) do
+      = image_tag post.user.profile.avatar
     = show_posttime(post)
     = post.user.username
 
