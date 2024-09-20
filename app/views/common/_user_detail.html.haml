@@ -1,0 +1,13 @@
+%p= user.username
+.imgWrapper
+  = image_tag '', class: 'imgWrapper_avatar hidden', id: 'avatar-image' # javascriptでsrcを追加するためsrcは空欄にしています
+  = image_tag 'default_avatar.png', class: 'imgWrapper_avatar hidden' , id:'default-avatar'
+#modal-overlay
+  #modal-content
+    %p アバターをアップロード
+    = file_field_tag :avatar, id: 'avatar-input'
+    %button{ id: 'uploadAvatarBtn' } Upload Avatar
+
+    %button#close-modal 閉じる
+
+= javascript_pack_tag 'user_detail'
