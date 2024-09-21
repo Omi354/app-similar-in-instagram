@@ -8,9 +8,17 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
   resource :profile, only: [:show, :edit, :update]
+  
+  resources :accounts, only: [:show] do
+    resource :follow, only: [:create, :show]
+    resource :unfollow, only: [:create]
+    resource :following, only: [:show]
+    resource :follower, only: [:show]
+  end
 
   resources :posts, only: [:new, :create, :index, :show] do
     resource :like, only: [:create, :destroy, :show]
     resources :comments, only: [:create, :index]
   end
+
 end

@@ -1,0 +1,21 @@
+%p.userName{ data: { following_id: @user.id, follower_id: current_user.id } }= @user.username
+
+
+%button#followBtn.hidden Follow
+%button#unfollowBtn.hidden unFollow
+
+
+
+
+.imgWrapper
+  = image_tag @user.profile.avatar, class: 'imgWrapper_avatar', id: 'avatar-image'
+
+= @user.posts.length
+
+= link_to account_follower_path(account_id: @user.id) do
+  %span#followersCount= @user.followers.length
+
+= link_to account_following_path(account_id: @user.id) do
+  = @user.followings.length
+
+= javascript_pack_tag 'account'

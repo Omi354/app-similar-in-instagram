@@ -1,23 +1,24 @@
 = link_to new_post_path do
   = image_tag 'photoCamera'
 
-- @posts.each do |post|
-  .card.post-index{data: {post_id: post.id}}
-    = image_tag post.user.profile.avatar
-    = show_posttime(post)
-    = post.user.username
+- @top_posts .each do |top_post|
+  .card.post-index{data: {post_id: top_post.id}}
+    = link_to account_path(top_post.user) do
+      = image_tag top_post.user.profile.avatar
+    = show_posttime(top_post)
+    = top_post.user.username
 
-    - post.images.each do |image|
+    - top_post.images.each do |image|
       = image_tag image
 
-    = post.caption
-    = image_tag 'likeBtn', class: 'hidden', id: "likeBtn_#{post.id}"
-    = image_tag 'unlikeBtn', class: 'hidden', id: "unlikeBtn_#{post.id}"
+    = top_post.caption
+    = image_tag 'likeBtn', class: 'hidden', id: "likeBtn_#{top_post.id}"
+    = image_tag 'unlikeBtn', class: 'hidden', id: "unlikeBtn_#{top_post.id}"
 
-    = link_to post_path(post) do
+    = link_to post_path(top_post) do
       = image_tag 'commentBtn'
 
-    = link_to "https://twitter.com/intent/tweet?url=#{URI.encode_www_form_component(request.original_url)}&text=#{URI.encode_www_form_component(post.caption)}", rel: 'nofollow', target: '_blank' do
+    = link_to "https://twitter.com/intent/tweet?url=#{URI.encode_www_form_component(request.original_url)}&text=#{URI.encode_www_form_component(top_post.caption)}", rel: 'nofollow', target: '_blank' do
       = image_tag 'shareBtn'
 
 = javascript_pack_tag 'like'
