@@ -1,0 +1,46 @@
+@import 'variables';
+.card {
+  margin-bottom: 20px;
+  &_images {
+    display: flex;
+    flex-wrap: wrap; // 複数の画像を行に並べるため
+    gap: 10px; // 画像間の間隔
+    margin-top: 10px;
+     // 1枚目の画像は常に50%の幅で表示
+    img:nth-child(1) {
+      width: 50%;
+      height: auto;
+    }
+
+    // 2枚目、3枚目は1/4の幅で表示
+    img:nth-child(2),
+    img:nth-child(3) {
+      width: 25%;
+      height: auto;
+    }
+
+    // 4枚目以降は表示しない
+    img:nth-child(n+4) {
+      display: none; // スライダーを導入する場合はJavaScriptで対応
+    }
+    // 画像が1枚だけの場合はその画像をフルサイズ表示
+    img:first-child:last-child {
+      width: 100%;
+    }
+  }
+  &_caption {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  &_actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  &_actionItem{
+    display: block;
+    width: 15px;
+    aspect-ratio: 1/1;
+    overflow: visible;
+  }
+}

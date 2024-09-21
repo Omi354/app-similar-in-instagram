@@ -1,0 +1,24 @@
+- posts .each do |post|
+  .card.post-index{data: {post_id: post.id}}
+    .postedUser
+      = link_to account_path(post.user) do
+        = image_tag post.user.profile.avatar, class: 'postedUser_avatar'
+      .postedUser_textContainer
+        %p.postedUser_username= post.user.username
+        %p.postedUser_postTime= show_posttime(post)
+
+    .card_images
+      - post.images.each do |image|
+        = image_tag image
+
+    %p.card_caption= post.caption
+
+    .card_actions
+      = image_tag 'likeBtn', class: ' card_actionItem hidden', id: "likeBtn_#{post.id}"
+      = image_tag 'unlikeBtn', class: 'card_actionItem hidden', id: "unlikeBtn_#{post.id}"
+
+      = link_to post_path(post) do
+        = image_tag 'commentBtn', class: 'card_actionItem'
+
+      = link_to "https://twitter.com/intent/tweet?url=#{URI.encode_www_form_component(request.original_url)}&text=#{URI.encode_www_form_component(post.caption)}", rel: 'nofollow', target: '_blank' do
+        = image_tag 'shareBtn', class: 'card_actionItem'

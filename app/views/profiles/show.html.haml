@@ -12,6 +12,7 @@
     = image_tag 'default_avatar.png', class: 'avatar_image hidden' , id:'default-avatar'
 
   = render 'common/user_detail', user: @user
+  = render 'common/index_posts', posts: @posts
 
   #modal-overlay
     #modal-content
@@ -22,3 +23,4 @@
       %button#close-modal 閉じる
 
 = javascript_pack_tag 'user_detail'
+= javascript_pack_tag 'like'

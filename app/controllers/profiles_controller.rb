@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
+    @posts = @user.posts
     @profile = @user.prepare_profile
   end
 

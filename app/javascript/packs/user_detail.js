@@ -10,7 +10,7 @@ const initializeModal = () => {
   $('#modal-overlay').hide()
 
   // 画像クリックでモーダル表示
-  $('.imgWrapper_avatar').on('click', () => {
+  $('.avatar_image').on('click', () => {
     $('#modal-overlay').show() // モーダルを表示
   })
 

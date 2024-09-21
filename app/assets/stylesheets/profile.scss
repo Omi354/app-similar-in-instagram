@@ -11,7 +11,7 @@
   }
 }
 
-.followBtn {
+.actionBtn {
   background-color: #fff;
   border: none;
   cursor: pointer;
@@ -21,7 +21,7 @@
 
   &:hover,
   &:focus {
-    color: #000; // ホバーやフォーカス時に文字色を黒に変える
+    color: #2F80ED; // ホバーやフォーカス時に文字色を黒に変える
   }
 }
 

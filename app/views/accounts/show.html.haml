@@ -5,13 +5,15 @@
   .header_center
     %p.userName{ data: { following_id: @user.id, follower_id: current_user.id } }= @user.username
   .header_right
-    %button.followBtn#followBtn.hidden Follow
-    %button.followBtn#unfollowBtn.hidden unFollow
+    %button.actionBtn#followBtn.hidden Follow
+    %button.actionBtn#unfollowBtn.hidden unFollow
 
+.container
+  .avatar
+    = image_tag @user.profile.avatar, class: 'avatar_image', id: 'avatar-image'
 
-.avatar
-  = image_tag @user.profile.avatar, class: 'avatar_image', id: 'avatar-image'
-
-= render 'common/user_detail', user: @user
+  = render 'common/user_detail', user: @user
+  = render 'common/index_posts', posts: @posts
 
 = javascript_pack_tag 'account'
+= javascript_pack_tag 'like'
