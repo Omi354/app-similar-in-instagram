@@ -1,0 +1,43 @@
+@import 'variables';
+
+
+.form {
+  margin: 35px 16px 0px;
+  position: relative;
+  &_label {
+    display: block;
+    font-size: 11px;
+    color: #979797;
+    margin-bottom: 4px;
+  }
+  &_text {
+    width: 100%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px, solid, #9E9E9E;
+    margin-bottom: 15px;
+    padding: 0px 0px 10px 0px;
+  }
+  &_link {
+    font-size: 11px;
+    color: #979797;
+    display: block;
+    text-align: right;
+  }
+  &_warnig {
+    font-size: 6px;
+  }
+  &_button {
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    padding: 14px;
+    background-color: $primary-color;
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 40px;
+  }
+}
