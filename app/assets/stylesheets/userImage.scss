@@ -1,0 +1,23 @@
+@import 'variables';
+
+.accountsList {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+  &_avatar {
+    overflow: hidden;
+    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+  }
+  &_username {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
+  }
+  &:not(:last-child) {
+    border-bottom: 1px solid #EEEEEE; // 最後のアイテム以外にボーダーボトムを設定
+    padding-bottom: 30px; // ボーダーと要素の間に余白を設定
+  }
+}

@@ -1,6 +1,9 @@
-= link_to request.referer || root_path do
-  = image_tag 'arror.png'
+.header
+  .header_left
+    = link_to request.referer || root_path do
+      = image_tag 'arror.png'
+  .header_center
+    %p followings
 
-%h2 followings
-
-= render 'common/show_accounts_list', users: @followings
+.container
+  = render 'common/show_accounts_list', users: @followings

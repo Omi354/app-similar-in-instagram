@@ -17,6 +17,9 @@
 @import 'variables';
 @import 'form';
 @import 'profile';
+@import 'userImage';
+
+
 
 body {
   font-family: $font-family;
@@ -49,6 +52,7 @@ a {
   grid-template-columns: 1fr auto 1fr; // 左と右は1fr、中央はautoサイズ
   align-items: center;
   padding: 0 16px;
+  margin-top: 45px;
   margin-bottom: 40px;
   &_left {
     grid-column: 1;  // 左のグリッド
@@ -58,6 +62,8 @@ a {
   &_center {
     grid-column: 2;  // 中央のグリッド
     text-align: center;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   &_right {
