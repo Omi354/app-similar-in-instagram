@@ -1,3 +1,26 @@
-= render 'common/user_detail', user: @user
+.header
+  .header_left
+    = link_to request.referer || root_path do
+      = image_tag 'arror.png'
+  .header_center
+    %p= @user.username
+
+.container
+
+  .avatar
+    = image_tag '', class: 'avatar_image hidden', id: 'avatar-image' # javascriptでsrcを追加するためsrcは空欄にしています
+    = image_tag 'default_avatar.png', class: 'avatar_image hidden' , id:'default-avatar'
+
+  = render 'common/user_detail', user: @user
+  = render 'common/index_posts', posts: @posts
+
+  #modal-overlay
+    #modal-content
+      %p アバターをアップロード
+      = file_field_tag :avatar, id: 'avatar-input'
+      %button{ id: 'uploadAvatarBtn' } Upload Avatar
+
+      %button#close-modal 閉じる
 
 = javascript_pack_tag 'user_detail'
+= javascript_pack_tag 'like'

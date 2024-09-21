@@ -1,16 +1,19 @@
+.header
+  .header_left
+    = link_to request.referer || root_path do
+      = image_tag 'arror.png'
+  .header_center
+    %p#commentTitle{ data: { post_id: @post.id}} Comment
 
-= link_to request.referer || root_path do
-  = image_tag 'arror.png'
+.container
+  .comments-container
 
-%h1#commentTitle{ data: { post_id: @post.id}} Comment
-
-.comments-container
-
-.commentBtn
-  = image_tag 'commentBtn.png'
-.commentArea.hidden
-  = text_field_tag 'commentArea'
-  %button#submitComment{ type: 'button' } comment
+  .newComment
+    .commentBtn
+      = image_tag 'commentBtn.png'
+    .commentArea.hidden
+      = text_area_tag 'commentArea', nil, class: 'form_text'
+      %button.form_commentBtn#submitComment{ type: 'button' } comment
 
 
 = javascript_pack_tag 'comment'

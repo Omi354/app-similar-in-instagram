@@ -1,0 +1,22 @@
+@import 'variables';
+
+
+.newComment {
+  position: fixed;
+  width: 80%;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  padding: 12px 21px;
+  box-shadow: 
+    -5px 5px 10px rgba(0, 0, 0, 0.2),  /* 左下方向 */
+    5px 5px 10px rgba(0, 0, 0, 0.2);   /* 右下方向 */
+}
+
+.commentBtn {
+  width: 100%;
+}
+
+.commentArea {
+
+}

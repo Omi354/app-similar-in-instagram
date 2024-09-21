@@ -1,24 +1,8 @@
-= link_to new_post_path do
-  = image_tag 'photoCamera'
+.header
+  .header_left
+    = link_to new_post_path do
+      = image_tag 'photoCamera'
 
-- @top_posts .each do |top_post|
-  .card.post-index{data: {post_id: top_post.id}}
-    = link_to account_path(top_post.user) do
-      = image_tag top_post.user.profile.avatar
-    = show_posttime(top_post)
-    = top_post.user.username
-
-    - top_post.images.each do |image|
-      = image_tag image
-
-    = top_post.caption
-    = image_tag 'likeBtn', class: 'hidden', id: "likeBtn_#{top_post.id}"
-    = image_tag 'unlikeBtn', class: 'hidden', id: "unlikeBtn_#{top_post.id}"
-
-    = link_to post_path(top_post) do
-      = image_tag 'commentBtn'
-
-    = link_to "https://twitter.com/intent/tweet?url=#{URI.encode_www_form_component(request.original_url)}&text=#{URI.encode_www_form_component(top_post.caption)}", rel: 'nofollow', target: '_blank' do
-      = image_tag 'shareBtn'
-
+.container
+  = render 'common/index_posts', posts: @top_posts
 = javascript_pack_tag 'like'

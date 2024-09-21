@@ -1,7 +1,48 @@
-.imgWrapper {
+.avatar {
   width: 84px;
-  aspect-ratio: 1/1;
   margin: 0 auto;
+  border-radius: 50%;
+  border: 1px solid #E91E63;
+  padding: 3.5px;
+  &_image {
+    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
+}
+
+.actionBtn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #BDBDBD;
+  transition: color 0.5s ease; // 色の変化に0.5秒のアニメーションを適用
+
+  &:hover,
+  &:focus {
+    color: #2F80ED; // ホバーやフォーカス時に文字色を黒に変える
+  }
+}
+
+.profileNumbers {
+  display: flex;
+  justify-content: space-between;
+  margin: 45px 50px 0px;
+  &_item {
+    text-align: center;
+    flex: 1;
+  }
+  &_number {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+  &_label {
+    font-size: 14px;
+    color: #9E9E9E;
+    margin: 0;
+  }
 }
 
 #modal-overlay {

@@ -12,9 +12,11 @@ $(document).ready(() => {
     const comments = response.data
     comments.forEach(comment => {
       const commentHtml = `
-        <div class="comment">
-          <img src="${comment.user.profile.avatar_url}" alt="User Avatar">
-          <div class="commentContent">${comment.content}</div>
+        <div class="postedUser">
+          <img class="postedUser_avatar" src="${comment.user.profile.avatar_url}" alt="User Avatar">
+          <div class="postedUser_textContainer">
+            <p class="postedUser_username">${comment.user.username}</p>
+            <p class="postedUser_comment">${comment.content}</p>
         </div>
       `
       $('.comments-container').append(commentHtml)
@@ -47,9 +49,11 @@ $(document).ready(() => {
     .then(response => {
       const comment = response.data
       const commentHtml = `
-        <div class="comment">
-          <img src="${comment.user.profile.avatar_url}" alt="User Avatar">
-          <div class="commentContent">${comment.content}</div>
+        <div class="postedUser">
+          <img class="postedUser_avatar" src="${comment.user.profile.avatar_url}" alt="User Avatar">
+          <div class="postedUser_textContainer">
+            <p class="postedUser_username">${comment.user.username}</p>
+            <p class="postedUser_comment">${comment.content}</p>
         </div>
       `
       $('.comments-container').append(commentHtml)

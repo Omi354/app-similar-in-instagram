@@ -1,11 +1,12 @@
-%p= user.username
-.imgWrapper
-  = image_tag '', class: 'imgWrapper_avatar hidden', id: 'avatar-image' # javascriptでsrcを追加するためsrcは空欄にしています
-  = image_tag 'default_avatar.png', class: 'imgWrapper_avatar hidden' , id:'default-avatar'
-#modal-overlay
-  #modal-content
-    %p アバターをアップロード
-    = file_field_tag :avatar, id: 'avatar-input'
-    %button{ id: 'uploadAvatarBtn' } Upload Avatar
-
-    %button#close-modal 閉じる
+.profileNumbers
+  .profileNumbers_item
+    %p.profileNumbers_number= user.posts.length
+    %p.profileNumbers_label Posts
+  .profileNumbers_item
+    = link_to account_follower_path(account_id: user.id) do
+      %p.profileNumbers_number#followersCount= user.followers.length
+      %p.profileNumbers_label Followers
+  .profileNumbers_item
+    = link_to account_following_path(account_id: user.id) do
+      %p.profileNumbers_number= user.followings.length
+      %p.profileNumbers_label Followings
