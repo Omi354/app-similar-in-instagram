@@ -22,7 +22,7 @@
 FactoryBot.define do
   factory :comment do
     content { Faker::Lorem.characters(number: 50) }
-    association :post
+    association :post, :with_image
     association :user
   end
 end

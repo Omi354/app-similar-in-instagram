@@ -25,7 +25,7 @@ FactoryBot.define do
       user { create(:user) }
     end
 
-    follower { create(:user) }
+    follower { user }
     following { create(:user) }
 
     after(:build) do |relationship|

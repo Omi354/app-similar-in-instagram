@@ -22,6 +22,6 @@
 FactoryBot.define do
   factory :like do
     association :user
-    association :post
+    association :post, :with_image
   end
 end
