@@ -40,4 +40,72 @@ RSpec.describe User, type: :model do
       expect(user.errors.messages[:username][0]).to eq("can't be blank")
     end
   end
+
+  context 'emailがnilの場合' do
+    let!(:user){ build(:user, email: '') }
+
+    before do
+      user.save
+    end
+
+    it 'ユーザー情報が保存されない' do
+      expect(user.errors.messages[:email][0]).to eq("can't be blank")
+    end
+  end
+
+  context 'emailがすでに存在する場合' do
+    let!(:user1){ create(:user, email: 'test@example.com') }
+    let!(:user2){ build(:user, email: 'test@example.com') }
+
+    before do
+      user2.save
+    end
+
+    it 'ユーザー情報が保存されない' do
+      expect(user2).not_to be_valid
+      expect(user2.errors.messages[:email][0]).to eq("has already been taken")
+    end
+  end
+
+  context 'usernameがすでに存在する場合' do
+    let!(:user1){ create(:user, username: 'test') }
+    let!(:user2){ build(:user, username: 'test') }
+
+    before do
+      user2.save
+    end
+
+    it 'ユーザー情報が保存されない' do
+      expect(user2).not_to be_valid
+      expect(user2.errors.messages[:username][0]).to eq("has already been taken")
+    end
+  end
+
+  context 'emailの形式が誤っている場合' do
+    let!(:user){ build(:user, email: 'test') }
+
+    before do
+      user.save
+    end
+
+    it 'ユーザー情報が保存されない' do
+      expect(user).not_to be_valid
+      expect(user.errors.messages[:email][0]).to eq("is invalid")
+    end
+  end  
+
+  context 'passwordが空欄の場合' do
+    let!(:user){ build(:user, password: '') }
+
+    before do
+      user.save
+    end
+
+    it 'ユーザー情報が保存されない' do
+      expect(user).not_to be_valid
+      expect(user.errors.messages[:password][0]).to eq("can't be blank")
+    end
+  end
+
+
 end

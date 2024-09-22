@@ -21,6 +21,17 @@
 #
 FactoryBot.define do
   factory :relationship do
-    
+    transient do
+      user { create(:user) }
+    end
+
+    follower { create(:user) }
+    following { create(:user) }
+
+    after(:build) do |relationship|
+      if relationship.follower == relationship.following
+        relationship.following = create(:user) # 異なるユーザーを再生成
+      end
+    end
   end
 end
