@@ -21,12 +21,14 @@ FactoryBot.define do
     caption { Faker::Lorem.characters(number: 50) }
     association :user
 
-    after(:build) do |post|
-      post.images.attach(
-        io: File.open(Rails.root.join('app/assets/images/arror.png')),
-        filename: 'arror.png',
-        content_type: 'image/png'
-      )
+    trait :with_image do
+      after(:build) do |post|
+        post.images.attach(
+          io: File.open(Rails.root.join('app/assets/images/arror.png')),
+          filename: 'arror.png',
+          content_type: 'image/png'
+        )
+      end
     end
   end
 end
