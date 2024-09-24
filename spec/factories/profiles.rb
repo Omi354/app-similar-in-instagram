@@ -1,31 +1,30 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: profiles
 #
 #  id         :bigint           not null, primary key
-#  caption    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint           not null
 #
 # Indexes
 #
-#  index_posts_on_user_id  (user_id)
+#  index_profiles_on_user_id  (user_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (user_id => users.id)
 #
+
 FactoryBot.define do
-  factory :post do
-    caption { Faker::Lorem.characters(number: 50) }
+  factory :profile do
     association :user
 
-    trait :with_image do
-      after(:build) do |post|
-        post.images.attach(
-          io: File.open(Rails.root.join('app/assets/images/arror.png')),
-          filename: 'arror.png',
+    trait :with_avatar do
+      after(:build) do |profile|
+        profile.avatar.attach(
+          io: File.open(Rails.root.join('app/assets/images/sample_avatar1.jpg')),
+          filename: 'sample_avatar1.jpg',
           content_type: 'image/png'
         )
       end

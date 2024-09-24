@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     @comment.save!
     render json: @comment, include: ['user.profile']
-
   end
 
   private
