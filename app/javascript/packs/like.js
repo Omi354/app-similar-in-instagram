@@ -6,7 +6,7 @@ axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 
 
-$(document).on('turbolinks:load', () => {
+$(document).ready(() => {
   $('.post-index').each(function() {    //hamlの繰り返しに対応して、eachの繰り返し処理を行う
     const dataset = $(this).data()
     const postId = dataset.postId
