@@ -1,0 +1,8 @@
+.header
+  .header_left
+    = link_to new_post_path do
+      = image_tag 'photoCamera'
+
+.container
+  = render 'common/index_posts', posts: @top_posts
+= javascript_pack_tag 'like'
