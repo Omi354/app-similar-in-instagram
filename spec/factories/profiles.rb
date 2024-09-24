@@ -15,14 +15,19 @@
 #
 #  fk_rails_...  (user_id => users.id)
 #
-class Profile < ApplicationRecord
-  belongs_to :user
-  has_one_attached :avatar
 
-  validates :avatar, presence: true
+FactoryBot.define do
+  factory :profile do
+    association :user
 
-  def avatar_url
-    Rails.application.routes.url_helpers.rails_blob_url(avatar, only_path: true) if avatar.attached?
+    trait :with_avatar do
+      after(:build) do |profile|
+        profile.avatar.attach(
+          io: File.open(Rails.root.join('app/assets/images/sample_avatar1.jpg')),
+          filename: 'sample_avatar1.jpg',
+          content_type: 'image/png'
+        )
+      end
+    end
   end
-
 end

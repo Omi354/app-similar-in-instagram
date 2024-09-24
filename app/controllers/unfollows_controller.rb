@@ -6,7 +6,5 @@ class UnfollowsController < ApplicationController
     render json: {
       msg: 'アンフォローしました'
     }
-
   end
-
 end

@@ -11,14 +11,11 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.prepare_profile
     @profile.assign_attributes(profile_params)
-    if @profile.save
-      render json: { message: 'Profile updated successfully' }
-    else
-      render json: { error: 'Failed to update profile' }, status: :unprocessable_entity
-    end
+    @profile.save!
+    render json: { message: 'Profile updated successfully' }
   end
 
-  def edit
+  def edit        #フロント側にアバターをアップロードの有無と有の場合画像のurlを返す
     profile = current_user.profile
     avatar_status = profile&.avatar&.attached? || false
     render json: {

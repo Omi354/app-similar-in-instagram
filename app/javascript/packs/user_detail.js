@@ -6,9 +6,6 @@ import { csrfToken } from 'rails-ujs'
 axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 const initializeModal = () => {
-  // モーダルが表示されないように最初に非表示に設定
-  $('#modal-overlay').hide()
-
   // 画像クリックでモーダル表示
   $('.avatar_image').on('click', () => {
     $('#modal-overlay').show() // モーダルを表示

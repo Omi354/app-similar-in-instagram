@@ -14,7 +14,7 @@
   = render 'common/user_detail', user: @user
   = render 'common/index_posts', posts: @posts
 
-  #modal-overlay
+  #modal-overlay{ style: 'display: none;' }
     #modal-content
       %p アバターをアップロード
       = file_field_tag :avatar, id: 'avatar-input'
