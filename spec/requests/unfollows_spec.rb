@@ -16,7 +16,7 @@ RSpec.describe "Unfollows", type: :request do
         let!(:relationship) { create(:relationship, following: user2, follower: user1)}
 
         it "ステータスコード200 && msg: アンフォローしましたが返ってくる && フォロー関係が削除されている" do
-          post account_unfollow_path(account_id: user2.id)
+          post api_unfollow_path(account_id: user2.id)
 
           expect(response).to have_http_status(200)
 

@@ -6,7 +6,7 @@ axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 const handleFollowBtn = (followingId) => {
   // current_userがaccount_idの人をフォローしているかどうかを判断
-  axios.get(`/accounts/${followingId}/follow`)
+  axios.get(`/api/accounts/${followingId}/follow`)
   .then(response => {
     if (response.data.follow) {
       // unfollowを表示するためのremove,addの処理
@@ -22,7 +22,7 @@ const handleFollowBtn = (followingId) => {
 
 const createFollow = (followingId) => {
   $('#followBtn').on('click', () => {
-    axios.post(`/accounts/${followingId}/follow`, {
+    axios.post(`/api/accounts/${followingId}/follow`, {
       following_id: followingId
     })
     .then(response => {
@@ -41,7 +41,7 @@ const createFollow = (followingId) => {
 
 const createUnfollow = (followingId) => {
   $('#unfollowBtn').on('click', () => {
-    axios.post(`/accounts/${followingId}/unfollow`, {
+    axios.post(`/api/accounts/${followingId}/unfollow`, {
       following_id: followingId
     })
     .then(response => {
