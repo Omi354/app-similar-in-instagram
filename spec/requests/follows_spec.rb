@@ -15,7 +15,7 @@ RSpec.describe "Follows", type: :request do
       describe "GET /follows" do
 
         it "ステータスコード200 && follow: falseが返ってくる" do
-          get account_follow_path(account_id: user2.id)
+          get api_follow_path(account_id: user2.id)
           expect(response).to have_http_status(200)
           body = JSON.parse(response.body)
           expect(body['follow']).to eq(false)
@@ -28,7 +28,7 @@ RSpec.describe "Follows", type: :request do
         let!(:relationship) { create(:relationship, following: user2, follower: user1)}
 
         it "ステータスコード200 && follow: trueが返ってくる" do
-          get account_follow_path(account_id: user2.id)
+          get api_follow_path(account_id: user2.id)
           expect(response).to have_http_status(200)
           body = JSON.parse(response.body)
           expect(body['follow']).to eq(true)
@@ -39,7 +39,7 @@ RSpec.describe "Follows", type: :request do
     context 'current_userがuser2に対してフォローボタンを押した場合' do
       describe "POST /follows" do
         it "ステータスコード200 && msg: フォローしましたが返ってくる && フォロー関係が作成されている" do
-          post account_follow_path(account_id: user2.id)
+          post api_follow_path(account_id: user2.id)
 
           expect(response).to have_http_status(200)
 

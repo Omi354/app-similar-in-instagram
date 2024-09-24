@@ -14,7 +14,7 @@ RSpec.describe "Comments", type: :request do
 
     describe "GET /comments" do
       it "200ステータスが返ってくる" do
-        get post_comments_path(post_id: sample_post.id)
+        get api_comments_path(post_id: sample_post.id)
         expect(response).to have_http_status(200)
 
         body = JSON.parse(response.body)
@@ -33,7 +33,7 @@ RSpec.describe "Comments", type: :request do
 
     describe "POST /comments" do
       it "200ステータスが返ってくる" do
-        post post_comments_path(post_id: sample_post.id), params: {comment: { content: 'hogehoge', post_id: sample_post.id } }
+        post api_comments_path(post_id: sample_post.id), params: {comment: { content: 'hogehoge', post_id: sample_post.id } }
         expect(response).to have_http_status(200)
 
         body = JSON.parse(response.body)

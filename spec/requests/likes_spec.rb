@@ -10,11 +10,11 @@ RSpec.describe 'Likes', type: :request do
       sign_in user
     end
 
-    describe 'GET /posts/:post_id/like' do
+    describe 'GET /api/posts/:post_id/like' do
       context 'いいねをしている場合' do
         let!(:like) { create(:like, user: user, post: test_post) }
         it '200ステータス && has_like: true が返ってくる' do
-          get post_like_path(post_id: test_post.id)
+          get api_like_path(post_id: test_post.id)
           expect(response).to have_http_status(200)
 
           body = JSON.parse(response.body)
@@ -25,7 +25,7 @@ RSpec.describe 'Likes', type: :request do
 
       context 'いいねをしていない場合' do
         it '200ステータス && has_like: false が返ってくる' do
-          get post_like_path(post_id: test_post.id)
+          get api_like_path(post_id: test_post.id)
           expect(response).to have_http_status(200)
 
           body = JSON.parse(response.body)
@@ -34,9 +34,9 @@ RSpec.describe 'Likes', type: :request do
       end
     end
 
-    describe 'POST /posts/:post_id/like' do
+    describe 'POST /api/posts/:post_id/like' do
       it '200ステータス && has_like: true && likeが作成されている' do
-        post post_like_path(post_id: test_post.id), params: { like: { post_id: test_post.id } }
+        post api_like_path(post_id: test_post.id), params: { like: { post_id: test_post.id } }
         expect(response).to have_http_status(200)
 
         body = JSON.parse(response.body)
@@ -47,10 +47,10 @@ RSpec.describe 'Likes', type: :request do
       end
     end
 
-    describe 'DELETE /posts/:post_id/like' do
+    describe 'DELETE /api/posts/:post_id/like' do
       let!(:like) { create(:like, user: user, post: test_post) }
       it '200ステータス && has_like: false && likeが削除されている' do
-        delete post_like_path(post_id: test_post.id)
+        delete api_like_path(post_id: test_post.id)
 
         expect(response).to have_http_status(200)
 

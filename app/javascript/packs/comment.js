@@ -7,7 +7,7 @@ axios.defaults.headers.common['X-CSRF-Token'] = csrfToken()
 
 $(document).ready(() => {
   const postId = $('#commentTitle').data('post-id')
-  axios.get(`/posts/${postId}/comments`)
+  axios.get(`/api/posts/${postId}/comments`)
   .then(response => {
     const comments = response.data
     comments.forEach(comment => {
@@ -41,7 +41,7 @@ $(document).ready(() => {
     const formData = new FormData()
     formData.append('comment[content]', comment)
     formData.append('comment[post_id]', postId)
-    axios.post(`/posts/${postId}/comments`, formData, {
+    axios.post(`/api/posts/${postId}/comments`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
