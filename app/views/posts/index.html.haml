@@ -4,5 +4,6 @@
       = image_tag 'photoCamera'
 
 .container
-  = render 'common/index_posts', posts: @top_posts
+  = render 'common/tabs'
+  = render 'common/index_posts', posts: @desc_posts
 = javascript_pack_tag 'like'
