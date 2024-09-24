@@ -20,9 +20,13 @@
 @import 'userImage';
 @import 'comment';
 @import 'tabs';
+@import 'flash';
+@import 'header';
 
 body {
   font-family: $font-family;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 img {
@@ -48,34 +52,6 @@ p {
   &_image {
     object-fit: contain;
     width: 100%;
-  }
-}
-
-.header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr; // 左と右は1fr、中央はautoサイズ
-  align-items: center;
-  padding: 0 16px;
-  margin-top: 45px;
-  margin-bottom: 40px;
-  &_left {
-    grid-column: 1;  // 左のグリッド
-    text-align: left;
-    &__canceBtn {
-      color: #2F80ED;
-    }
-  }
-
-  &_center {
-    grid-column: 2;  // 中央のグリッド
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  &_right {
-    grid-column: 3;  // 右のグリッド
-    text-align: right;
   }
 }
 

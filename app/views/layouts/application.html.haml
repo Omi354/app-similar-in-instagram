@@ -15,6 +15,14 @@
     %meta{name: "turbolinks-cache-control", content: "no-cache"}
 
   %body
+    .header__allPage
+      .header__allPage_center
+        = link_to root_path do
+          = image_tag 'logo.png', class: 'header__allPage_logo'
+      .header__allPage_right
+        = link_to profile_path do
+          = image_tag current_user&.profile&.avatar, class: 'header__allPage_avatar'
+
     - if flash.present?
       .flash
         - flash.each do |key, value|
