@@ -1,0 +1,22 @@
+@import 'variables';
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  &_item {
+    width: 200px;
+    padding: 10px 30px;
+    font-size: 10px;
+    text-align: center;
+    background-color: #EFEFEF;
+    a {
+      color: #DDDDDD;
+    }
+    &.active {
+      background-color: #DDDDDD;
+      a {
+        color: #333333;
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.tabs
+  .tabs_item{ class: "#{set_active(root_path)}" }
+    = link_to 'All Posts', root_path
+  .tabs_item{ class: "#{set_active(timeline_path)}" }
+    = link_to 'タイムライン', timeline_path

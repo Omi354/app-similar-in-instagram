@@ -27,7 +27,6 @@ RSpec.describe Comment, type: :model do
 
     before do
       comment.save
-      puts comment.post.inspect  # ここでpostが正しく作成されているか確認
     end
 
     it '投稿が保存される' do
