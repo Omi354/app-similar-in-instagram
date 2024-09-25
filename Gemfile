@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.7'
+ruby '3.1.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.0.6', '>= 6.0.6.1'
+gem 'rails', '~> 6.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -38,6 +38,7 @@ gem 'hamlit'
 gem 'letter_opener'
 gem 'letter_opener_web', '~> 1.0'
 gem 'sidekiq', '~> 6.4'
+gem 'psych', '~> 3.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
