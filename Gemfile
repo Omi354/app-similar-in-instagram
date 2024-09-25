@@ -39,6 +39,7 @@ gem 'letter_opener'
 gem 'letter_opener_web', '~> 1.0'
 gem 'sidekiq', '~> 6.4'
 gem 'psych', '~> 3.1'
+gem 'rexml', '~> 3.2', '>= 3.2.4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
