@@ -50,3 +50,4 @@ yarn-debug.log*
 .yarn-integrity
 dump.rdb
 .env
+/config/master.key
