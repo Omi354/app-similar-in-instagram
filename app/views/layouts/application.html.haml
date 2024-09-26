@@ -21,7 +21,7 @@
           = image_tag 'logo.png', class: 'header__allPage_logo'
       .header__allPage_right
         = link_to profile_path do
-          - if signed_in?
+          - if signed_in? && current_user.profile&.avatar.present?
             = image_tag current_user&.profile&.avatar, class: 'header__allPage_avatar'
 
     - if flash.present?
