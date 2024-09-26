@@ -49,8 +49,11 @@ p {
 
 .mv {
   width: 100%;
+  overflow: hidden;
+  height: 300px;
+  margin-top: 10px;
   &_image {
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
   }
 }
