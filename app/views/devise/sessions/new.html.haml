@@ -3,10 +3,10 @@
 .form
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     = f.label :email, class: 'form_label'
-    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form_text'
+    = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form_text', value: 'guest@example.com'
 
     = f.label :password, class: 'form_label'
-    = f.password_field :password, autocomplete: "current-password", class: 'form_text'
+    = f.password_field :password, autocomplete: "current-password", class: 'form_text', value: 'password'
 
     = link_to 'Forgot password?', new_user_password_path, class: 'form_link'
     = link_to 'Sign up', new_user_registration_path, class: 'form_link'
