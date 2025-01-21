@@ -22,9 +22,16 @@
 ![badge](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?logo=visualstudiocode&logoColor=fff)
 
 ## 使用イメージ
-### 画像投稿・閲覧・いいね
+### 登録・画像設定
+https://github.com/user-attachments/assets/aab65487-459a-48dc-9c2c-fba315786e7f
 
-### コメント・フォロー
+### 画像投稿・閲覧・いいね
+https://github.com/user-attachments/assets/51967b4e-6b86-4103-920e-93db95d232ec
+
+### フォロー
+https://github.com/user-attachments/assets/3123f7ad-edf7-4c8b-9534-5ff357c725ed
+
+
 
 ## 機能一覧
 | 機能       | 詳細                                                              |
